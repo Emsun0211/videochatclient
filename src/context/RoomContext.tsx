@@ -20,7 +20,8 @@ import {
 	toggleChatAction,
 } from "../reducers/ChatActions";
 
-const WS = "http://localhost:8080";
+// const WS = "http://localhost:8080";
+const WS = "https://videoserver-a1l4.onrender.com";
 
 export const RoomContext = createContext<null | any>(null);
 const ws = socketIo(WS);
@@ -101,11 +102,12 @@ export const RoomProvider: React.FC<{ children: ReactNode }> = ({
 	useEffect(() => {
 		const meId = uuidv4();
 
-		const peer = new Peer(meId, {
-			host: "localhost",
-			port: 9001,
-			path: "/",
-		});
+		// const peer = new Peer(meId, {
+		// 	host: "localhost",
+		// 	port: 9001,
+		// 	path: "/",
+		// });
+		const peer = new Peer(meId);
 		setMe(peer);
 		try {
 			navigator.mediaDevices
